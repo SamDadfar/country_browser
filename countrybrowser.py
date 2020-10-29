@@ -244,7 +244,10 @@ class DetailFrame(LabelFrame):
                 if fnmatch.fnmatch(file, iso_code + ".svg"):
                     file_png = file.split(".")[0] + ".png"
                     svg_image = svg2rlg(base_path + file)
-                    renderPM.drawToFile(svg_image, base_path + file_png, fmt="PNG")
+                    try:
+                        renderPM.drawToFile(svg_image, base_path + file_png, fmt="PNG")
+                    except:
+                        file_png = "not_available.png"
                     image = Image.open(base_path + file_png)
                     image.thumbnail((200, 200))
                     image.save(base_path + file_png)
