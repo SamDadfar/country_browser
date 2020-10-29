@@ -233,6 +233,8 @@ class DetailFrame(LabelFrame):
         :return: None
         """
         base_path = "images/images_flags/"
+        if not os.path.isdir(os.path.join(base_path)):
+            os.mkdir(os.path.join(base_path))
         iso_code = str(country.alpha3_code).lower()
         file_name = iso_code + ".png"
         flag_url = country.flag
